@@ -21,28 +21,22 @@
         <div>
             <dx:ASPxGridView ID="ASPxGridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" ClientInstanceName="Grid" KeyFieldName="ProductID" OnCustomCallback="ASPxGridView1_CustomCallback">
                 <Columns>
-                    <dx:GridViewCommandColumn VisibleIndex="0">
-                    </dx:GridViewCommandColumn>
-                    <dx:GridViewDataTextColumn FieldName="ProductID" ReadOnly="True" VisibleIndex="1">
+                    <dx:GridViewCommandColumn />
+                    <dx:GridViewDataTextColumn FieldName="ProductID" ReadOnly="True">
                         <EditFormSettings Visible="False" />
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="ProductName" VisibleIndex="2">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="SupplierID" VisibleIndex="3">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="CategoryID" VisibleIndex="4">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="QuantityPerUnit" VisibleIndex="5">
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataColumn FieldName="Discontinued" VisibleIndex="6">
+                    <dx:GridViewDataTextColumn FieldName="ProductName" />
+                    <dx:GridViewDataTextColumn FieldName="SupplierID" />
+                    <dx:GridViewDataTextColumn FieldName="CategoryID" />
+                    <dx:GridViewDataTextColumn FieldName="QuantityPerUnit" />
+                    <dx:GridViewDataColumn FieldName="Discontinued" >
                         <HeaderTemplate>
                             <dx:ASPxCheckBox ID="HeaderCheckBox" runat="server" OnInit="HeaderCheckBox_Init" AllowGrayed="true" AllowGrayedByClick="false">
                                 <ClientSideEvents CheckedChanged="HeaderValueChanged" />
                             </dx:ASPxCheckBox>
                         </HeaderTemplate>
                         <DataItemTemplate>
-                            <dx:ASPxCheckBox ID="CellCheckBox" runat="server" OnInit="CellCheckBox_Init" Checked='<%# Eval("Discontinued")%>'>
-                            </dx:ASPxCheckBox>
+                            <dx:ASPxCheckBox ID="CellCheckBox" runat="server" OnInit="CellCheckBox_Init" Checked='<%# Eval("Discontinued")%>' />
                         </DataItemTemplate>
                         <Settings AllowSort="False" />
                     </dx:GridViewDataColumn>
@@ -50,7 +44,7 @@
             </dx:ASPxGridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 SelectCommand="SELECT [ProductID], [ProductName], [SupplierID], [CategoryID], [QuantityPerUnit], [Discontinued] FROM [Products]"
-                ConnectionString="<%$ ConnectionStrings:ConnStr %>"></asp:SqlDataSource>
+                ConnectionString="<%$ ConnectionStrings:ConnStr %>" />
         </div>
     </form>
 </body>
