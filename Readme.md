@@ -1,19 +1,25 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128532789/15.1.5%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T282813)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
+# Grid View for ASP.NET Web Forms - How to implement the Select All feature
+
+This example demonstrates how to display the Select All checkbox in the Grid View control's column header.
+
+![Select All Rows](select-all.gif)
+
+In this example, the **Discontinued** column displays [checkboxes](https://docs.devexpress.com/AspNet/11415/components/data-editors/checkbox) in its cells. Click a checkbox in a data cell to change the selection state of the corresponding row. Click the checkbox in the column header to send a callback to the server and change the selection state of all grid rows.
+
+## Files to Review
 
 * [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
 * [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
-<!-- default file list end -->
-# ASPxGridView - ASPxCheckBox inside DataItemTemplate - Implement the Select All feature
 
+## Documentation
 
-This example demonstrates how to add the Select All feature to the ASPxGridView column header when ASPxCheckBox is placed to <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebGridViewDataColumn_DataItemTemplatetopic">DataItemTemplate</a>.<br />ASPxGridView is initialized and bound to the Northwind database in the page markup. The Discontinued column's data item and header are replaced with ASPxCheckBox. Click the CheckBox in the column header to perform a callback to the grid and set all cells of the Discontinued column to true.
+* [ASPxGridView](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxGridView)
+* [Grid View - Examples](https://docs.devexpress.com/AspNet/3768/components/grid-view/examples)
 
-<br/>
+## More Examples
 
-
+- [How to Delete Selected Rows in a Grid](https://github.com/DevExpress-Examples/aspxgridview-delete-selected-rows)
