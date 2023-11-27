@@ -4,11 +4,11 @@
 <!-- default badges end -->
 # Grid View for ASP.NET Web Forms - How to implement the Select All feature
 
-This example demonstrates how to display the Select All check box in the Grid View control's column header.
+This example demonstrates how to display the Select All checkbox in the Grid View control's column header.
 
 ![Select All Rows](select-all.gif)
 
-In this example, the **Discontinued** column displays [check boxes](https://docs.devexpress.com/AspNet/11415/components/data-editors/checkbox) in its cells. Click a check box in a data cell to change the selection state of the corresponding row. Click the check box in the column header to send a callback to the server and change the selection state of all grid rows.
+In this example, the **Discontinued** column displays [checkboxes](https://docs.devexpress.com/AspNet/11415/components/data-editors/checkbox) in its cells. Click a checkbox in a data cell to change the selection state of the corresponding row. Click the checkbox in the column header to send a callback to the server and change the selection state of all grid rows.
 
 ## Files to Review
 
