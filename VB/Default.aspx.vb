@@ -8,9 +8,9 @@ Partial Public Class _Default
 	Inherits System.Web.UI.Page
 
 	Protected Sub HeaderCheckBox_Init(ByVal sender As Object, ByVal e As EventArgs)
-		Dim view As DataView = CType(SqlDataSource1.Select(DataSourceSelectArguments.Empty), DataView)
+		Dim view As DataView = DirectCast(SqlDataSource1.Select(DataSourceSelectArguments.Empty), DataView)
 		Dim expression = view.Table.Rows.OfType(Of DataRow)()
-		Dim selectedRowsCount As Integer = expression.Count(Function(r) CType(r("Discontinued"), Boolean?).Equals(True))
+		Dim selectedRowsCount As Integer = expression.AsEnumerable().Count(Function(r) CType(r("Discontinued"), Boolean?).Equals(True))
 		Dim allRowsCount As Integer = view.Count
 		Dim checkBox As ASPxCheckBox = TryCast(sender, ASPxCheckBox)
 		If selectedRowsCount = 0 Then
@@ -32,17 +32,18 @@ Partial Public Class _Default
 	Protected Sub ASPxGridView1_CustomCallback(ByVal sender As Object, ByVal e As ASPxGridViewCustomCallbackEventArgs)
 		Dim Parameters() As String = e.Parameters.Split(New Char() { "|"c })
 		Dim value As String = Parameters(1)
-		Dim id As Object
+'INSTANT VB NOTE: The variable id was renamed since Visual Basic does not handle local variables named the same as class members well:
+		Dim id_Conflict As Object
 		If Parameters(0) = "CellClick" Then
 			Dim key As String = Parameters(2)
-			id = ASPxGridView1.GetRowValuesByKeyValue(key, New String() { "ProductID" })
-			SqlDataSource1.UpdateCommand = String.Format("Update [Products] set [Discontinued] = '{0}' Where [ProductID] = {1}", value, id)
+			id_Conflict = ASPxGridView1.GetRowValuesByKeyValue(key, New String() { "ProductID" })
+			SqlDataSource1.UpdateCommand = String.Format("Update [Products] set [Discontinued] = '{0}' Where [ProductID] = {1}", value, id_Conflict)
 			SqlDataSource1.Update()
 			ASPxGridView1.DataBind()
 		ElseIf Parameters(0) = "HeaderClick" Then
 			For i As Integer = 0 To ASPxGridView1.VisibleRowCount - 1
-				id = ASPxGridView1.GetRowValues(i, New String() { "ProductID" })
-				SqlDataSource1.UpdateCommand = String.Format("Update [Products] set [Discontinued] = '{0}' Where [ProductID] = {1}", value, id)
+				id_Conflict = ASPxGridView1.GetRowValues(i, New String() { "ProductID" })
+				SqlDataSource1.UpdateCommand = String.Format("Update [Products] set [Discontinued] = '{0}' Where [ProductID] = {1}", value, id_Conflict)
 				SqlDataSource1.Update()
 			Next i
 			ASPxGridView1.DataBind()
